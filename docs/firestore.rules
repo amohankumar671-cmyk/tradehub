@@ -1,0 +1,25 @@
+// ── Firestore Security Rules for TradeHub ─────────────────────
+// Paste these into Firebase Console → Firestore Database → Rules
+// Then click "Publish"
+//
+// These rules ensure:
+//  - Users can only read/write their own document
+//  - No unauthenticated access to any user data
+//  - savedStrategies array is user-owned and private
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // User profiles — only the owner can read or write
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Block all other paths by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design Tokens ─────────────────────────────────────── */
+:root {
+  --bg:       #080C14;
+  --bg2:      #0D1420;
+  --bg3:      #111827;
+  --bg4:      #1a2235;
+  --border:   #1e2d45;
+  --border2:  #243552;
+  --border3:  #2e4268;
+  --text:     #E8EDF5;
+  --text2:    #8A9BB5;
+  --text3:    #4A5A74;
+  --green:    #00D68F;
+  --red:      #FF4D6A;
+  --blue:     #3D8EF0;
+  --amber:    #F59E0B;
+  --purple:   #A78BFA;
+  --teal:     #2DD4BF;
+  --orange:   #FF8C00;
+  --font:     'Space Grotesk', sans-serif;
+  --mono:     'IBM Plex Mono', monospace;
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border3); }
+
+/* ── Selection ─────────────────────────────────────────── */
+::selection { background: rgba(0, 214, 143, 0.25); color: var(--text); }
+
+/* ── Input resets ──────────────────────────────────────── */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+input[type="number"] { -moz-appearance: textfield; }
+
+/* ── Range slider ──────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 4px;
+  background: var(--border2);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--green);
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+/* ── Utility classes ───────────────────────────────────── */
+.font-mono  { font-family: var(--mono); }
+.text-green { color: var(--green); }
+.text-red   { color: var(--red); }
+.text-blue  { color: var(--blue); }
+.text-amber { color: var(--amber); }
+.text-muted { color: var(--text2); }
+.text-hint  { color: var(--text3); }
+
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+/* ── Ticker bar animation ──────────────────────────────── */
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track { animation: tickerScroll 32s linear infinite; }
+.ticker-track:hover { animation-play-state: paused; }
+
+/* ── Pulse dot ─────────────────────────────────────────── */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+.pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+/* ── Page fade-up entrance ─────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.45s ease forwards; }
+.fade-up-delay-1 { animation: fadeUp 0.45s 0.08s ease forwards; opacity: 0; }
+.fade-up-delay-2 { animation: fadeUp 0.45s 0.16s ease forwards; opacity: 0; }
+.fade-up-delay-3 { animation: fadeUp 0.45s 0.24s ease forwards; opacity: 0; }
+.fade-up-delay-4 { animation: fadeUp 0.45s 0.32s ease forwards; opacity: 0; }
+
+/* ── Section title accent ──────────────────────────────── */
+.sec-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-title::before {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--green);
+  flex-shrink: 0;
+}
