@@ -11,6 +11,7 @@ const navLinks = [
   { to: '/scanner',      label: 'Pattern Scanner' },
   { to: '/signals',      label: 'Live Signals'    },
   { to: '/tools',        label: 'Tools'           },
+  { to: '/oi-analysis',  label: 'OI Analysis'     },
 ];
 
 function Avatar({ user, profile, size = 30 }) {
@@ -109,8 +110,9 @@ export default function Navbar() {
                       <div style={{ fontSize: 11, color: 'var(--text3)', marginTop: 2 }}>{user.email}</div>
                     </div>
                     {[
-                      { label: 'My Saved Strategies', icon: '🔖', action: () => { nav('/profile'); setShowDropdown(false); }},
-                      { label: 'Tools & Calculators',  icon: '🧮', action: () => { nav('/tools');   setShowDropdown(false); }},
+                      { label: 'My Saved Strategies', icon: '🔖', action: () => { nav('/profile');     setShowDropdown(false); }},
+                      { label: 'Tools & Calculators',  icon: '🧮', action: () => { nav('/tools');       setShowDropdown(false); }},
+                      { label: 'OI Analysis',          icon: '📊', action: () => { nav('/oi-analysis'); setShowDropdown(false); }},
                     ].map(item => (
                       <button key={item.label} onClick={item.action} style={{ display: 'flex', alignItems: 'center', gap: 8, width: '100%', padding: '8px 12px', background: 'none', border: 'none', borderRadius: 8, color: 'var(--text2)', fontSize: 13, cursor: 'pointer', textAlign: 'left', fontFamily: 'var(--font)', transition: 'all 0.12s' }}
                         onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg3)'; e.currentTarget.style.color = 'var(--text)'; }}
@@ -153,5 +155,3 @@ export default function Navbar() {
     </>
   );
 }
-
-

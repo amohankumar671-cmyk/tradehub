@@ -11,6 +11,7 @@ import PatternScannerPage from './pages/PatternScannerPage';
 import ToolsPage from './pages/ToolsPage';
 import ProfilePage from './pages/ProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
+import OIAnalysisPage from './pages/OIAnalysisPage';
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="/scanner"        element={<PatternScannerPage />} />
               <Route path="/tools"          element={<ToolsPage />} />
               <Route path="/profile"        element={<ProfilePage />} />
+              <Route path="/oi-analysis"    element={<OIAnalysisPage />} />
               <Route path="*"               element={<NotFoundPage />} />
             </Routes>
           </main>
@@ -37,4 +39,3 @@ export default function App() {
     </AuthProvider>
   );
 }
-
